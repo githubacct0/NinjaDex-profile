@@ -41,7 +41,7 @@ const navItems = [
 
 export default function Header() {
   const { isAuthenticated } = useAuth();
-  const { connected, connect, disconnect } = useWallet();
+  const { connected, connect, disconnect, select } = useWallet();
   const [mobilemenu, setMobilemenu] = useState(false)
   const onConnect = () => {
     if (!connected) {
@@ -50,6 +50,13 @@ export default function Header() {
       disconnect();
     }
   };
+  const changeWallet = () => {
+	 if (connected) {
+      disconnect();
+    } 
+	select();
+  }
+  
   const showmobilemenu = () => {
     setMobilemenu(!mobilemenu)
   };
@@ -102,6 +109,7 @@ export default function Header() {
                 <a href="#" onClick={onConnect} className="btn btn-default text-white" style={{ backgroundColor: '#851cef', borderRadius: 6 }}><img src='/ion_wallet-outline.png' alt="wallet_icon" /> {connected ? 'Disconnect' : 'Connect'}
                   <img src='/limit_arrow.svg' style={{ marginLeft: 4 }} alt="arrow" /></a>
               </li>
+			  <li><a href="#" onClick={changeWallet} style= {{ paddingLeft: '15px', lineHeight: '45px' }}>Change Wallet</a></li>
             </ul>
           </div>
 
