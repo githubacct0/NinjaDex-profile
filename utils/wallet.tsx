@@ -10,6 +10,7 @@ import {
   PhantomWalletAdapter,
   SolletExtensionAdapter,
   MathWalletAdapter,
+  SolflareExtensionWalletAdapter,
 } from '../wallet-adapters';
 
 const ASSET_URL = 'https://cdn.jsdelivr.net/gh/solana-labs/oyster@main/assets/wallets';
@@ -31,6 +32,17 @@ export const WALLET_PROVIDERS = [
     url: 'https://www.solong.com',
     icon: `${ASSET_URL}/solong.png`,
     adapter: SolongWalletAdapter,
+  },
+ {
+    name: 'Solflare',
+    url: 'https://solflare.com/access-wallet',
+    icon: `${ASSET_URL}/solflare.svg`,
+  },
+  {
+    name: 'Solflare Extension',
+    url: 'https://solflare.com',
+    icon: `${ASSET_URL}/solflare.svg`,
+    adapter: SolflareExtensionWalletAdapter,
   },
   {
     name: 'Phantom',

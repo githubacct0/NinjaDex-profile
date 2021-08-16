@@ -87,8 +87,11 @@ export function AuthProvider({ children }: ProviderProps) {
       setDataFetchLoading(false);
     }
     if (connected) {
-
-      fetchUserData();
+		if(wallet.publicKey != null)
+		{
+			fetchUserData();
+		}
+      
     }
 
   }, [connected]);
