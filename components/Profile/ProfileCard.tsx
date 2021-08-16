@@ -1,5 +1,5 @@
 import { Spin } from 'antd';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap'
 import styled from 'styled-components';
 import AppButton from '../AppButton';
 
@@ -97,15 +97,7 @@ const ProfilePicture = styled.div`
     left: 10%;
   }
 `;
-const Discord = styled.div`
-  width: auto;
-  float: left;
-  display: block;
-  text-align: center;
-  border-radius: 10px;
-  margin: 5px;
-  padding: 4px 12px;
-`;
+
 interface ProfileInfoProps {
   loading: boolean;
   userData: any;
@@ -157,31 +149,14 @@ export default function ProfileInfoCard({ userData, ninjaTokens, loading }: Prof
     <>
       <div className="card bg-dark border-primary mr-10 h-100 ">
         <div className="card-body card-body-image">
-          <img
-            src={userData?.profilePicture ? userData.profilePicture : '/profile.jpg'}
-            id="clip"
-            className="rounded-circle"
-            alt=""
-            width="250"
-            height="250"
-          />
+          <img src={userData?.profilePicture ? userData.profilePicture : '/profile.jpg'} id="clip" className="rounded-circle" alt="" width="250" height="250" />
           <div className="px-4  specs-text">
-            <h5 className="card-title text-white fs-3 mb-3 mx-3" style={{ textAlign: 'center' }}>
-              {userData?.username ? userData.username : 'Discord ID'}
-            </h5>
+            <h5 className="card-title text-white fs-3 mb-3 mx-3" style={{ textAlign: 'center' }}>{userData?.username ? userData.username : 'Discord ID'}</h5>
             <div className="flex mb-3">
-              <Discord className="text-uppercase specs " style={{ backgroundColor: '#522ebd' }}>
-                ninja warrior | p2w
-              </Discord>
-              <Discord className="text-uppercase specs " style={{ backgroundColor: '#864000' }}>
-                Trainee
-              </Discord>
-              <Discord className="text-uppercase specs " style={{ backgroundColor: ' #f9b208' }}>
-                NFT Winner
-              </Discord>
-              <Discord className="text-uppercase specs " style={{ backgroundColor: ' #00d455' }}>
-                Marbles
-              </Discord>
+              <p className="text-uppercase specs  p-2 mx-3" style={{ backgroundColor: '#522ebd', lineHeight: '0.6em', fontSize: '1em' }} >ninja warrior | p2w</p>
+              <p className="text-uppercase specs  p-2 mx-3" style={{ backgroundColor: '#864000' }} >Trainee</p>
+              <p className="text-uppercase specs p-2  mx-3" style={{ backgroundColor: ' #f9b208' }} >NFT Winner</p>
+              <p className="text-uppercase specs p-2  mx-3" style={{ backgroundColor: ' #00d455' }} >Marbles</p>
             </div>
           </div>
         </div>
