@@ -31,7 +31,7 @@ const Banner = styled.div`
   overflow: hidden;
   border: 1px solid #851cef;
   border-radius: 4px;
-  max-height: 300px;
+  max-height: 500px;
 `;
 
 const BannerImg = styled.img`
