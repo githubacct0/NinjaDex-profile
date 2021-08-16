@@ -87,22 +87,10 @@ export default function BioAndSocials({ userData }: BioAndSocialsProps) {
   return (
     <>
       <div className="card bg-dark border-primary py-1 h-100 ">
-        <div className="d-flex justify-content-end  mr-3">
-          <div className="mx-5">
-            <Button
-              onClick={() => setEditModal(true)}
-              style={{ background: '#1F2331', color: 'white' }}
-              size="large"
-              type="link"
-              icon={<EditOutlined />}
-            >
-              Edit
-            </Button>
-          </div>
-        </div>
+      
         <div className="row no-gutters px-3">
 
-          <div className="col-md-6">
+          <div className="col-md-5">
             <div className="px-3" >
               <div className="descrip text-md-left">
                 <p className="card-title fs-5 py-2 font-24">Description / Bio</p>
@@ -111,7 +99,7 @@ export default function BioAndSocials({ userData }: BioAndSocialsProps) {
             </div>
           </div>
 
-          <div className="col-md-2"></div>
+          <div className="col-md-1"></div>
           <div className="col-md-4">
 
             <div className="social-icons justify-content-md-end px-lg-5">
@@ -141,6 +129,15 @@ export default function BioAndSocials({ userData }: BioAndSocialsProps) {
               </div>
             </div>
           </div>
+		    <div className="col-md-2"> <Button
+              onClick={() => setEditModal(true)}
+              style={{ background: '#1F2331', color: 'white' }}
+              size="large"
+              type="link"
+              icon={<EditOutlined />}
+            >
+              Edit
+            </Button></div>
         </div>
       </div>
 
