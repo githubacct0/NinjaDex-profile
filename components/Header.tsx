@@ -74,12 +74,12 @@ export default function Header() {
 
   return (
     <Nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow mb-4 w-100" >
-      <div className="container-fluid g-0 topnav" style={{ padding: '0 5%' }}>
+      <div className="container-fluid g-0 topnav">
         <div className="row no-gutters margin-nav-auto p-1">
-          <div className="col-4 col-4k-4" style={{ marginTop: 14 }} id="logo-div">
+          <div className="col-4 col-4k-4"  id="logo-div">
             <img src="/LOGO_SOL_NOBG.png" id="brand" alt="" className="d-inline-block align-text-top" width="40" height="40" />
           </div>
-          <div className="col-6  col-4k-6" style={{ marginTop: 14 }}>
+          <div className="col-6  col-4k-6" style={{ marginTop: 5 }}>
             <a className="navbar-brand text-uppercase text-bold p-0 fw-bold" href="#">Ninja-DEX</a>
           </div>
         </div>
