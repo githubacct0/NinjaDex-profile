@@ -94,9 +94,15 @@ export function WalletProvider({ children }: WalledProviderProps) {
       } else {
         updateWallet();
       }
-	  setAutoConnect(true);
+	  
     }
   }, [provider, providerUrl, endpoint]);
+  
+  useEffect(() => {
+	if (provider) {
+		setAutoConnect(true);
+	}
+   }, [ providerUrl ]);
 
   const [connected, setConnected] = useState(false);
 
