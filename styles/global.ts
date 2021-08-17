@@ -234,9 +234,11 @@ td{
   }
   .footer-icons{
       justify-content: center;
+	  margin-bottom: 8px;
   }
   .footer-text{
       justify-content: center;
+	  padding-bottom: 12px;
   }
   .right-nav{
       float: left;
