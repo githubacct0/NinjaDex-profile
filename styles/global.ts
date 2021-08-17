@@ -192,7 +192,9 @@ td{
     margin: auto;
 }
 
-
+.topnav {
+	padding: 0 5%; 
+}
 @media (max-width: 1100px)
 {
   #clip{
@@ -207,6 +209,9 @@ td{
 
 @media (max-width: 770px)
 {
+	.topnav {
+		padding: 0 1%; 
+	}
   #clip{
       width: 200px;
       height: 200px;
@@ -327,4 +332,22 @@ color: #fff !important;
 .profile-modal .modal-header{
   border-bottom:0;
   }
+@media (max-width: 350px)
+{
+	.footer-text{
+		font-size: 14px;
+	}
+	
+}
+@media (max-width: 300px)
+{
+	.navbar{
+		padding: 0.5rem;
+	}
+	.footer-text{
+		font-size: 12px;
+	}
+	
+}
 `;
+
