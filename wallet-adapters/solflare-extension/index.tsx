@@ -38,11 +38,11 @@ export class SolflareExtensionWalletAdapter
     return undefined;
   }
 
-  private _handleConnect = (...args) => {
+  private _handleConnect = (...args: any) => {
     this.emit('connect', ...args);
   }
 
-  private _handleDisconnect = (...args) => {
+  private _handleDisconnect = (...args: any) => {
     this._provider?.off('connect', this._handleConnect);
     this._provider?.off('disconnect', this._handleDisconnect);
     this.emit('disconnect', ...args);
