@@ -99,9 +99,7 @@ export function WalletProvider({ children }: WalledProviderProps) {
   }, [provider, providerUrl, endpoint]);
   
   useEffect(() => {
-	if (provider) {
 		setAutoConnect(true);
-	}
    }, [ providerUrl ]);
 
   const [connected, setConnected] = useState(false);
