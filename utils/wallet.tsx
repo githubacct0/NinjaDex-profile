@@ -94,6 +94,7 @@ export function WalletProvider({ children }: WalledProviderProps) {
       } else {
         updateWallet();
       }
+	  setAutoConnect(true);
     }
   }, [provider, providerUrl, endpoint]);
 
@@ -168,7 +169,7 @@ export function WalletProvider({ children }: WalledProviderProps) {
         {WALLET_PROVIDERS.map((provider) => {
           const onClick = function () {
             setProviderUrl(provider.url);
-            setAutoConnect(true);
+            //setAutoConnect(true);
             close();
           };
 
