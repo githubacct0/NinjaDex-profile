@@ -99,8 +99,8 @@ const ProfilePicture = styled.div`
 `;
 
 const Discord = styled.div`
- width: auto;
- float: left;
+  width: auto;
+  float: left;
   display: block;
   text-align: center;
   border-radius: 10px;
