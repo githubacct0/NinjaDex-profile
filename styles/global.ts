@@ -339,6 +339,9 @@ color: #fff !important;
 	}
 	
 }
+.change_wallet-wrapper .ant-dropdown-menu-item:hover{
+	background-color: #1a2029;
+}
 @media (max-width: 300px)
 {
 	.navbar{
