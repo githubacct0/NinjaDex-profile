@@ -342,6 +342,16 @@ color: #fff !important;
 .change_wallet-wrapper .ant-dropdown-menu-item:hover{
 	background-color: #1a2029;
 }
+.change_wallet-wrapper .ant-dropdown-menu-item{
+  margin-right: 20px;
+}
+.right-nav .ant-btn:hover, 
+.right-nav .ant-btn:focus,
+.right-nav .ant-btn:active{
+  background: transparent;
+  color: #ffffff;
+}
+
 @media (max-width: 300px)
 {
 	.navbar{
