@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { Drawer } from 'antd';
+import { Drawer, Dropdown, Menu, Button as AntdButton  } from 'antd';
 import { useRouter } from 'next/router';
 import { SettingOutlined } from '@ant-design/icons';
 import WalletConnectHeader from './WalletConnectHeader';
@@ -43,13 +43,7 @@ export default function Header() {
   const { isAuthenticated } = useAuth();
   const { connected, connect, disconnect, select } = useWallet();
   const [mobilemenu, setMobilemenu] = useState(false)
-  const onConnect = () => {
-    if (!connected) {
-      connect();
-    } else {
-      disconnect();
-    }
-  };
+
   const changeWallet = () => {
 	 if (connected) {
       disconnect();
@@ -71,7 +65,34 @@ export default function Header() {
   const showSidebar = () => {
     setVisible(true);
   };
+  const Button = styled(AntdButton)`
+	background: transparent;
+	border: 0px;
+	padding: 5px;
+	color: #fff;
+	  &:hover {
+		background: transparent;
+		color: ${(props) => (props.isConnectButton ? '#21073c' : '')};
+	  }
+	`;
+  
+const Container = styled.div`
+	  display: flex;
+	  background: #851cef;
+	  border-radius: 6px;
+	  min-height: 38px;
+	  align-items: center;
+	  padding: 0 5px;
+	`;
 
+const menu = (
+    <Menu style={{  backgroundColor: '#1a2029'} } className="change_wallet-wrapper">
+      <Menu.Item key="3" onClick={select} style={{ color: 'white', backgroundColor: 'tranparent'} }>
+        Change Wallet
+      </Menu.Item>
+    </Menu>
+  );
+  
   return (
     <Nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow mb-4 w-100" >
       <div className="container-fluid g-0 topnav">
@@ -103,18 +124,27 @@ export default function Header() {
           </div>
           <div className="col-12 col-md-6 ">
             <ul className="navbar-nav right-nav">
-
-              <li className="nav-item">
-                <span><a href="#"> <SettingOutlined style={{ fontSize: 26, color: '#ffff', marginRight: 30, marginTop: 8 }} /></a></span>
-                <a href="#" onClick={onConnect} className="btn btn-default text-white" style={{ backgroundColor: '#851cef', borderRadius: 6 }}><img src='/ion_wallet-outline.png' alt="wallet_icon" /> {connected ? 'Disconnect' : 'Connect'}
-                  <img src='/limit_arrow.svg' style={{ marginLeft: 4 }} alt="arrow" /></a>
-              </li>
-			  <li><a href="#" onClick={changeWallet} style= {{ paddingLeft: '15px', lineHeight: '45px' }}>Change Wallet</a></li>
+			  <li> <span><a href="#"> <SettingOutlined style={{ fontSize: 26, color: '#ffff', marginRight: 30, marginTop: 8 }} /></a></span></li>
+			  <li className="nav-item">
+				<Container>
+					<img src='/ion_wallet-outline.png' alt="wallet_icon" /> 
+					<Button isConnectButton onClick={connected ? disconnect : connect}>
+					<span
+					  style={{ paddingLeft: '10px', paddingRight: '5', fontWeight: 'bold' }}
+					>
+					  {connected ? 'Disconnect' : 'Connect'}
+					</span>
+				  </Button>
+				  <Dropdown overlay={menu} >
+					<Button>
+					  <img src='/limit_arrow.svg' alt="" height="20px" width="15px" />
+					</Button>
+				  </Dropdown>
+				</Container>
+			  </li>
             </ul>
           </div>
-
         </div>
-
       </div>
     </Nav>
   );
