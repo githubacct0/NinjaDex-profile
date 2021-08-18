@@ -116,7 +116,7 @@ interface ProfileInfoProps {
 
 const roleColor: { [key: string]: string } = {
   'WEAPONS MASTER': '#000000',
-  TRAINEE: '#914500',
+  'TRAINEE': '#914500',
   'BABY NINJA': '#8C91A7',
   'FULL NINJA': '#00D455',
   'NINJA WARRIOR': "'#D000FF",
@@ -163,10 +163,7 @@ export default function ProfileInfoCard({ userData, ninjaTokens, loading }: Prof
           <div className="px-4  specs-text">
             <h5 className="card-title text-white fs-3 mb-3 mx-3" style={{ textAlign: 'center' }}>{userData?.username ? userData.username : 'Discord ID'}</h5>
             <div className="flex mb-3">
-              <Discord className="text-uppercase specs" style={{ backgroundColor: '#522ebd' }} >ninja warrior | p2w</Discord>
-              <Discord className="text-uppercase specs" style={{ backgroundColor: '#864000' }} >Trainee</Discord>
-              <Discord className="text-uppercase specs" style={{ backgroundColor: ' #f9b208' }} >NFT Winner</Discord>
-              <Discord className="text-uppercase specs" style={{ backgroundColor: ' #00d455' }} >Marbles</Discord>
+			  {showBadges()}
             </div>
           </div>
         </div>
