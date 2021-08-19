@@ -2,6 +2,7 @@ import { Spin } from 'antd';
 import { Col, Row } from 'react-bootstrap'
 import styled from 'styled-components';
 import AppButton from '../AppButton';
+import { DISCORD_AUTH0_URL, DISCORD_DEVELOP_URL } from '../../constants';
 
 interface PillProps {
   color?: string;
@@ -133,8 +134,9 @@ const roleColor: { [key: string]: string } = {
 };
 
 export default function ProfileInfoCard({ userData, ninjaTokens, loading }: ProfileInfoProps) {
+
   const connectDiscord = () => {
-    window.location.href = process.env.DISCORD_REDIRECT_OAUTH_URL;
+    window.location.href = DISCORD_AUTH0_URL;
   };
 
   const showBadges = () => {
@@ -163,7 +165,7 @@ export default function ProfileInfoCard({ userData, ninjaTokens, loading }: Prof
           <div className="px-4  specs-text">
             <h5 className="card-title text-white fs-3 mb-3 mx-3" style={{ textAlign: 'center' }}>{userData?.username ? userData.username : 'Discord ID'}</h5>
             <div className="flex mb-3">
-			  {showBadges()}
+              {showBadges()}
             </div>
           </div>
         </div>
