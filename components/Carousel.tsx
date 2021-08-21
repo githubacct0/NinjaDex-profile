@@ -1,5 +1,5 @@
 import React from "react";
-import { Carousel } from 'react-responsive-carousel';
+import { Carousel } from 'react-bootstrap';
 
 interface Props {
     sliders?: string[];
@@ -7,17 +7,19 @@ interface Props {
 
 const DEFAULT_SLIDERS = ["/slide1.jpg", "/slide2.png"];
 
-const CarouselComponent: React.FC<Props> =  ({sliders = DEFAULT_SLIDERS}: Props) => {
-    return(
-        <Carousel showThumbs={false}>
-            {sliders.map((image: string) => 
-                (
-                   <div key={image}>
-                    <img src={image} />
-                  </div>
-                )
+const CarouselComponent: React.FC<Props> = ({ sliders = DEFAULT_SLIDERS }: Props) => {
+    return (
+        <Carousel>
+            {sliders.map((image: string) =>
+                <Carousel.Item key={image}>
+                    <img
+                        className="d-block w-100"
+                        src={image}
+                        alt={image}
+                    />
+                </Carousel.Item>
             )}
-      </Carousel>
+        </Carousel>
     );
 };
 
