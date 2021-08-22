@@ -5,7 +5,7 @@ interface Props {
     sliders?: string[];
 }
 
-const DEFAULT_SLIDERS = ["/slide1.jpg", "/slide2.png"];
+const DEFAULT_SLIDERS = ["/slider1.png", "/slider2.png"];
 
 const CarouselComponent: React.FC<Props> = ({ sliders = DEFAULT_SLIDERS }: Props) => {
     return (
