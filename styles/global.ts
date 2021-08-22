@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 export const GlobalStyle = createGlobalStyle`
 body{
   background-color: #12151D;
-  color: white;
+  color: #fff !important;
   font-size: 1em;
 }
 
@@ -368,18 +368,23 @@ color: #fff !important;
 
 .leader-heading{
   font-size: 3em;
+  color: #fff !important;
+}
+.leader-row{
+  border-radius: 4px;
 }
 .leader-text{
   font-size: 1.1em;
-  color: #a7a8aa;
+  color: #fff;
 }
 .leaderboard-table{
   background-color: inherit !important;
 }
 .pagination .page-item .page-link{
-  background-color: #343a40 !important;
+  background-color: #1F2331 !important;
   color: white !important;
   border:none !important;
+  font-size: 1.3rem;
 }
 .image-leader{
   width: 80px !important;
@@ -456,7 +461,7 @@ select{
 }
 select option{
   background-color: inherit;
-  font-size: 1.3em !important;
+  font-size: 1em !important;
   padding: 1em !important;
 }
 
@@ -485,7 +490,7 @@ option:not(:checked) {
       }
       .search_icon{
           height: 40px;
-          width: 10%;
+          width: 3%;
           float: left;
           display: flex;
           justify-content: center;
@@ -1179,6 +1184,7 @@ td{
   }
   .leader-row{
       margin: 1em 1em !important;
+      
   }
   select{
       margin-bottom: 1em !important;
@@ -1231,14 +1237,15 @@ td{
       border: 4px ;
   }
   .right-icon{
-      transform: translate(80%,40%) !important;
+      transform: translate(55%,25%) !important;
       width: 100% !important;
       height: 100% !important;
   }
-  
+.search_icon{
+    width: 14% !important;
+  }
   
   
 }
 
 `;
-
