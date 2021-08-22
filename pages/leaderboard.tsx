@@ -21,7 +21,6 @@ const PageWrapper = styled.main`
 const Container = styled.div`
   height: 100vh;
   overflow-y: scroll;
-  color: ${(props) => props.theme.colors.grey};
 `;
 
 const Main = styled.main``;
@@ -115,8 +114,39 @@ export default function LeaderBoard() {
         <PageWrapper className={connected ? 'height-f' : 'height-v'}>
           <Carousel />
           <ContentWrapper>
-            <div className="title">Leaderboard</div>
-            <WeeklySeasonalToggle>
+            <div className="container-fluid g-md-0 my-3">
+              <div className="d-flex justify-content-center align-items-center">
+                <div className="my-3">
+                  <h1 className="leader-heading text-center">Leaderboard</h1>
+                  <p className="leader-text text-center">The Top Holders on NINJA PROTOCOL</p>
+                </div>
+              </div>
+            </div>
+            <div className="row mb-3 leaderboar-form">
+              <div className="col-6 col-md-3 col-lg-2 leftbtn h-100">
+                <div className="mr-lg-1 h-100">
+                  <select className="form-control text-white bg-dark" id="exampleFormControlSelect1">
+                    <option>Weekly</option>
+                    <option>Seasonal</option>
+                  </select>
+                </div>
+              </div>
+              <div className="col-6 col-lg-2 col-md-3 rightbtn h-100">
+                <div className="mx-lg-2">
+                  <select className="form-control text-white bg-dark" id="exampleFormControlSelect2">
+
+                    <option value="">Last 7 Days</option>
+                    <option value="">Last 24 Hours</option>
+                    <option value="">Last 30 Days</option>
+                    <option value="">All Time</option>
+
+
+                  </select>
+                </div>
+              </div>
+              <StyledInput />
+            </div>
+            {/* <WeeklySeasonalToggle>
               <ClearButton onClick={() => setLeaderBoardType(LeaderboardType.Weekly)} selected={leaderboardType === LeaderboardType.Weekly}>
                 Weekly
               </ClearButton>
@@ -124,14 +154,14 @@ export default function LeaderBoard() {
               <ClearButton onClick={() => setLeaderBoardType(LeaderboardType.Seasonal)} selected={leaderboardType === LeaderboardType.Seasonal}>
                 Seasonal
               </ClearButton>
-            </WeeklySeasonalToggle>
-            <SearchBarWrapper>
-              <StyledInput />
-            </SearchBarWrapper>
+            </WeeklySeasonalToggle> */}
+
+
+
             <div className="row no-gutters leader-row mb-3 py-2">
               <div className="col-md-4  d-none d-md-block ">
                 <div className="d-flex justify-content-md-start">
-                  <b>Holders</b><img src='/sort_icon.svg' alt='sort-icon' />
+                  <b>Holders</b><img className="mt-1 ml-1" src='/sort_icon.svg' alt='sort-icon' />
                 </div>
 
               </div>
@@ -183,7 +213,7 @@ export default function LeaderBoard() {
                 <LeaderBoardCard key={user.discordId} user={user} />
               )
             })}
-            <div className="container-fluid">
+            <div className="container-fluid" style={{ marginBottom: '5%' }}>
               <div className="row no-gutters">
                 <div className="col-12">
                   <nav aria-label="Page navigation example">
@@ -191,7 +221,7 @@ export default function LeaderBoard() {
                       <ul className="pagination">
                         <li className="page-item bg-dark">
                           <a className="page-link" href="#" aria-label="Previous">
-                            <i className="fas fa-chevron-left" style={{ color: 'white' }}></i>
+                            <img src='/chevron_left.svg' alt='left' />
                             <span className="sr-only">Previous</span>
                           </a>
                         </li>
@@ -204,7 +234,7 @@ export default function LeaderBoard() {
                         <li className="page-item"><a className="page-link" href="#">100</a></li>
                         <li className="page-item">
                           <a className="page-link" href="#" aria-label="Next">
-                            <i className="fas fa-chevron-right" style={{ color: 'white' }}></i>
+                            <img src='/chevron_right.svg' alt='right' />
                             <span className="sr-only">Next</span>
                           </a>
                         </li>

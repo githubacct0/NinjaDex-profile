@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { Row, Col } from 'react-bootstrap';
 interface LeaderBoardCardProps {
   user: User;
 }
@@ -91,8 +91,8 @@ export default function LeaderBoardCard({ user }: LeaderBoardCardProps) {
           <div className="col-md-4">
             <div className="d-flex justify-content-center align-items-center h-100 w-100">
               <div className="align-self-center">
-                <img src="/leaderboard-icons/LOGO_SOL_NOBG.png" width={18} height={18} alt="LOGO_SOL_NOBG" />
-                71,840
+                <img className="mr-2" src="/leaderboard-icons/LOGO_SOL_NOBG.png" width={18} height={18} alt="LOGO_SOL_NOBG" />
+                <span>71,840</span>
               </div>
 
             </div>
