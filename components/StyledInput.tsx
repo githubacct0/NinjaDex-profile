@@ -25,8 +25,14 @@ const StyledInput = styled(Input)``;
 
 export default function AppInput() {
   return (
-    <Wrapper>
-      <StyledInput size="large" placeholder="Search" prefix={<SearchOutlined color="#898989" />} />
-    </Wrapper>
+    <div className="col-12 col-lg-8  col-md-6 searchbtn">
+      <div className="ml-lg-2">
+        <div className="searchbar">
+          <input className="search_input" type="text" name="" placeholder="Search name or address" />
+          <a href="#" className="search_icon d-flex justify-content-center"><img src='/search.svg' alt='serach-icon' /></a>
+          <a href="#" className="search_icon float-right d-flex justify-content-center"><img src="/filter.svg" alt="" /></a>
+        </div>
+      </div>
+    </div>
   );
 }
