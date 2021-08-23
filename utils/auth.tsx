@@ -15,6 +15,11 @@ interface ProviderProps {
   children: React.ReactNode;
 }
 
+declare global {
+  interface Window {
+    solana: any;
+  }
+}
 export function AuthProvider({ children }: ProviderProps) {
   const [initalLoading, setInitalLoading] = useState<boolean>(true);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
