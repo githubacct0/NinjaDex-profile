@@ -7,10 +7,7 @@ import { useWallet } from './wallet';
 import { getToken } from './discord/getToken';
 import { resetLocalStorage } from './authHelpers';
 
-import {
-  DISCORD_API_URL,
-  WALLET_LOCAL_KEY,
-} from '../constants';
+import { DISCORD_API_URL, WALLET_LOCAL_KEY } from '../constants';
 
 const AuthContext: React.Context<null | AuthContextValues> = React.createContext<null | AuthContextValues>(null);
 
@@ -25,7 +22,6 @@ export function AuthProvider({ children }: ProviderProps) {
   const [userWalletId, setUserWalletId] = useState<string | null>(null);
   const [dataFetchLoading, setDataFetchLoading] = useState<boolean>(false);
 
-
   const client = useApolloClient();
   const { connect, connected, wallet, disconnect } = useWallet();
 
@@ -37,7 +33,7 @@ export function AuthProvider({ children }: ProviderProps) {
       variables: { filter: { walletId: { eq: walletId } } },
     });
     return data;
-  }
+  };
 
   const onConnectClick = () => {
     if (!isAuthenticated) {
@@ -52,20 +48,19 @@ export function AuthProvider({ children }: ProviderProps) {
 
   // useEffect will be triggerd when page loads for the first time
   useEffect(() => {
-    const fetchUserState = async (walletId: string)  => {
+    const fetchUserState = async (walletId: string) => {
       const data = await getUserData(walletId);
       setUserData(data.queryUser[0]);
       setInitalLoading(false);
-    }
+    };
 
     const walletId = localStorage.getItem(WALLET_LOCAL_KEY);
-    if(walletId) {
+    if (walletId) {
       fetchUserState(walletId);
       setUserWalletId(walletId);
       setIsAuthenticated(true);
-    }
-    else {
-    setInitalLoading(false);
+    } else {
+      setInitalLoading(false);
     }
   }, []);
 
@@ -85,17 +80,13 @@ export function AuthProvider({ children }: ProviderProps) {
       setUserWalletId(wallet.publicKey.toBase58());
       setIsAuthenticated(true);
       setDataFetchLoading(false);
-    }
+    };
     if (connected) {
-		if(wallet.publicKey != null)
-		{
-			fetchUserData();
-		}
-      
+      if (wallet.publicKey != null) {
+        fetchUserData();
+      }
     }
-
   }, [connected]);
-
 
   // useEffect will be triggered after redirect from discord auth
   useEffect(() => {
@@ -103,38 +94,43 @@ export function AuthProvider({ children }: ProviderProps) {
       try {
         const checkUser = await getUserData(userWalletId);
         if (checkUser?.queryUser.length === 0) {
-        const config = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        };
+          const config = {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          };
 
-        const result = await axios.get(`${DISCORD_API_URL}/users/@me`, config);
-        const discordData = result?.data;
-        const memberRoles = await axios.get(`/api/getGuildMemberRoles/${discordData?.id}`);
-        const userData = {
-          walletId: userWalletId,
-          discordId: discordData?.id,
-          ninjaHolding:  0,
-          email: discordData?.email,
-          username: discordData?.username,
-          roles: memberRoles?.data?.data,
-          signDate: new Date().toISOString(),
-        };
+          const result = await axios.get(`${DISCORD_API_URL}/users/@me`, config);
+          const discordData = result?.data;
+          const memberRoles = await axios.get(`/api/getGuildMemberRoles/${discordData?.id}`);
+          const userData = {
+            walletId: userWalletId,
+            discordId: discordData?.id,
+            ninjaHolding: 0,
+            email: discordData?.email,
+            username: discordData?.username,
+            roles: memberRoles?.data?.data,
+            signDate: new Date().toISOString(),
+          };
 
-        const data = JSON.stringify(userData);
-        const encodedData = new TextEncoder().encode(data);
-        const { signature, publicKey} = await wallet.sign(encodedData, 'hex');
-        const addConfig = {
-          headers: {
-            'Content-Type': "application/json",
-          }
+          const data = JSON.stringify(userData);
+          const encodedData = new TextEncoder().encode(data);
+          const { publicKey } = wallet;
+          const { signature } = await window.solana.signMessage(encodedData, 'hex');
+          const addConfig = {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          };
+          await axios.post(
+            '/api/addUserData',
+            JSON.stringify({ signature, publicKey: publicKey.toString(), encodedData }),
+            addConfig,
+          );
+          setUserData(userData);
         }
-         await axios.post('/api/addUserData', JSON.stringify({signature, publicKey: publicKey.toString(), encodedData}), addConfig);
-        setUserData(userData);
-      }
       } catch (err) {
-        alert("error");
+        alert('error');
         setDataFetchLoading(false);
       }
     };
@@ -148,10 +144,9 @@ export function AuthProvider({ children }: ProviderProps) {
       }
     };
 
-    if(!wallet && router?.query?.code) {
+    if (!wallet && router?.query?.code) {
       connect();
-    }
-    else if (router?.query?.code && userWalletId && connected) {
+    } else if (router?.query?.code && userWalletId && connected) {
       setDataFetchLoading(true);
       const { code }: any = router.query;
       onCodeAccess(code);
