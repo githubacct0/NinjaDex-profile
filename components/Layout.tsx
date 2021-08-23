@@ -9,6 +9,7 @@ const AppWrapper = styled.div`
 
 const PageWrap = styled(AppWrapper)`
   max-width: 100%;
+  
 `;
 interface LayoutProps {
   children: React.ReactNode;

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { Drawer, Dropdown, Menu, Button as AntdButton  } from 'antd';
+import { Drawer, Dropdown, Menu, Button as AntdButton } from 'antd';
 import { useRouter } from 'next/router';
 import { SettingOutlined } from '@ant-design/icons';
 import WalletConnectHeader from './WalletConnectHeader';
@@ -50,7 +50,7 @@ const Button = styled(AntdButton)`
     };
 	}
 	`;
-  
+
 const Container = styled.div`
 	  display: flex;
 	  background: #851cef;
@@ -62,7 +62,7 @@ const Container = styled.div`
 
 export default function Header() {
   const { isAuthenticated } = useAuth();
-  const { connected, wallet , connect, disconnect, select } = useWallet();
+  const { connected, wallet, connect, disconnect, select } = useWallet();
   const [mobilemenu, setMobilemenu] = useState(false)
   const publicKey = (connected && wallet?.publicKey?.toBase58()) || '';
 
@@ -81,26 +81,26 @@ export default function Header() {
   const showSidebar = () => {
     setVisible(true);
   };
-  
-  
+
+
 
   const menu = (
-    <Menu style={{  backgroundColor: '#1a2029'} } className="change_wallet-wrapper">
+    <Menu style={{ backgroundColor: '#1a2029' }} className="change_wallet-wrapper">
       {connected && <LinkAddress shorten={true} address={publicKey} />}
-      <Menu.Item key="3" onClick={select} style={{ color: 'white', backgroundColor: 'tranparent'} }>
+      <Menu.Item key="3" onClick={select} style={{ color: 'white', backgroundColor: 'tranparent' }}>
         Change Wallet
       </Menu.Item>
     </Menu>
   );
-  
+
   return (
     <Nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow mb-4 w-100" >
       <div className="container-fluid g-0 topnav">
         <div className="row no-gutters margin-nav-auto p-1">
-          <div className="col-4 col-4k-4"  id="logo-div">
+          <div className="col-4" id="logo-div">
             <img src="/LOGO_SOL_NOBG.png" id="brand" alt="" className="d-inline-block align-text-top" width="40" height="40" />
           </div>
-          <div className="col-6  col-4k-6" style={{ marginTop: 5 }}>
+          <div className="col-6" style={{ marginTop: 5 }}>
             <a className="navbar-brand text-uppercase text-bold p-0 fw-bold" href="#">Ninja-DEX</a>
           </div>
         </div>
@@ -108,7 +108,7 @@ export default function Header() {
           <span onClick={showmobilemenu} className="navbar-toggler-icon py-3"></span>
         </button>
         <div className={mobilemenu ? "collapse navbar-collapse row show" : "collapse navbar-collapse row"} id="navbarNav">
-          <div className="col-12 col-md-6  col-4k-6">
+          <div className="col-12 col-md-7">
             <ul className="navbar-nav mx-4">
 
               {navItems.map((navItem, index) => (
@@ -122,25 +122,25 @@ export default function Header() {
               ))}
             </ul>
           </div>
-          <div className="col-12 col-md-6 ">
+          <div className="col-12 col-md-5">
             <ul className="navbar-nav right-nav">
               <li> <span><a href="#"> <SettingOutlined style={{ fontSize: 26, color: '#ffff', marginRight: 30, marginTop: 8 }} /></a></span></li>
               <li className="nav-item">
-              <Container>
-                <img src='/ion_wallet-outline.png' alt="wallet_icon" /> 
-                <Button  onClick={connected ? disconnect : connect}>
-                <span
-                  style={{ paddingLeft: '10px', paddingRight: '5', fontWeight: 'bold' }}
-                >
-                  {connected ? 'Disconnect' : 'Connect'}
-                </span>
-                </Button>
-                <Dropdown overlay={menu} >
-                <Button>
-                  <img src='/limit_arrow.svg' alt="" height="20px" width="15px" />
-                </Button>
-                </Dropdown>
-              </Container>
+                <Container>
+                  <img src='/ion_wallet-outline.png' alt="wallet_icon" />
+                  <Button onClick={connected ? disconnect : connect}>
+                    <span
+                      style={{ paddingLeft: '10px', paddingRight: '5', fontWeight: 'bold' }}
+                    >
+                      {connected ? 'Disconnect' : 'Connect'}
+                    </span>
+                  </Button>
+                  <Dropdown overlay={menu} >
+                    <Button>
+                      <img src='/limit_arrow.svg' alt="" height="20px" width="15px" />
+                    </Button>
+                  </Dropdown>
+                </Container>
               </li>
             </ul>
           </div>

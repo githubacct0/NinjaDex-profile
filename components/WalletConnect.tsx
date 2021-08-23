@@ -1,6 +1,7 @@
 import React from 'react';
 import { useWallet } from '../utils/wallet';
 import AppButton from './AppButton';
+import { Button } from 'react-bootstrap'
 
 export default function WalletConnect() {
   const { connected, connect, disconnect } = useWallet();
