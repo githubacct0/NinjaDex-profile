@@ -395,7 +395,7 @@ color: #fff !important;
 .discord-text{
   font-size: 0.7em;
   color: #a7a8aa;
-  line-height: 0.03em;
+  line-height: 2.0em;
   margin: 0 !important;
 }
 .name-text{
@@ -408,9 +408,8 @@ color: #fff !important;
   color: #a7a8aa;
   margin-bottom: 0.3em;
 }
-.name-text::after {
-  position: absolute;
-  content: "";
+.yellow-line {
+margin: auto;
   top: 23px;
   bottom:0%;
   left: 0%;
@@ -1196,8 +1195,9 @@ td{
   .leaderboar-form{
       padding: 0px !important;
       margin: 1em !important;
-  }.leftbtn, .rightbtn, .searchbtn{
-      padding: 0px !important;
+  }
+  .search_icon{
+    width: 14%;
   }
   .leftbtn div{
       margin-right: 5px !important;
@@ -1249,3 +1249,4 @@ td{
 }
 
 `;
+
