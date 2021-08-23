@@ -15,7 +15,6 @@ const FETCH_LIMIT = 15;
 const PageWrapper = styled.main`
   align-items: center;
   justify-content: center;
-  padding-top: 2%;
   margin: 0 5%;
 `;
 const Container = styled.div`
@@ -26,7 +25,7 @@ const Container = styled.div`
 const Main = styled.main``;
 
 const ContentWrapper = styled.div`
-  margin: 45px 5%;
+  margin: 20px 0%;
   .title {
     font-size: ${(props) => props.theme.fontSizes[7]};
     color: ${(props) => props.theme.colors.white};
@@ -161,7 +160,7 @@ export default function LeaderBoard() {
             <div className="row no-gutters leader-row mb-3 py-2">
               <div className="col-md-4  d-none d-md-block ">
                 <div className="d-flex justify-content-md-start">
-                  <b>Holders</b><img className="mt-1 ml-1" src='/sort_icon.svg' alt='sort-icon' />
+                  <b>Holders<img className="ml-1" width={12} height={12} src='/sort_icon.svg' alt='sort-icon' /></b>
                 </div>
 
               </div>

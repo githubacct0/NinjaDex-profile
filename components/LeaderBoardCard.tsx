@@ -78,10 +78,11 @@ export default function LeaderBoardCard({ user }: LeaderBoardCardProps) {
             <div>
               <div>
                 <p className="name-text w-100">1. Dany | NINJA</p>
+                <hr className='yellow-line' />
               </div>
             </div>
             <p className="title-text d-none d-md-block">Legenday 25/11/2021</p>
-            <p className="title-text d-block d-md-none">Legenday 25/11/2021</p>
+
           </div>
         </div>
 
